@@ -1,0 +1,81 @@
+import json
+
+def addNewAnimal(nick, breed, food, type):
+    temp_animal = {
+        "nick": nick,
+        "breed": breed,
+        "food": food,
+        "type": type
+    }
+    animals.append(temp_animal)
+    with open("rome.json", "w", encoding='utf-8') as file:
+        json.dump(animals, file)
+
+
+def findAnnimalByBreed(breed):
+    flag = False
+    for i in animals:
+        if breed == i["breed"]:
+            flag = True
+            print(i)
+
+
+
+
+def findDietarry(nick):
+    flag = False
+    for i in animals:
+        if nick == i["nick"]:
+            flag = True
+            print(i)
+
+    if flag:
+        print()
+    else:
+        print("Такої тварини не знайдено!")
+
+
+if __name__ == "__main__":
+    with open("rome.json", "r", encoding= 'utf-8') as file:
+        animals = json.load(file)
+    not_exit = True
+    while not_exit:
+        choice = input("Це - головне меню! Для того, щоб додати нову тварину - напишіть 1, знайти тварину за породою - напишіть 2, знайти харчування тварини за її ім'ям - напишіть 3: ")
+        if choice == "1":
+            animal_name_input = input("Введіть ім'я тварини(aнглійською):")
+            animal_breed_input = input("Введіть породу тварин:")
+            animal_dietary_input = input("Введіть рекомендоване харчування для  тварини:")
+            type_input = input("Введіть вид тварини")
+            addNewAnimal(animal_name_input, animal_breed_input, animal_dietary_input, type_input)
+        elif choice == "2":
+            animal_breed_input = input("Введіть породу тварин:")
+            findAnnimalByBreed(animal_breed_input)
+        elif choice == "3":
+            animal_name_input = input("Введіть ім'я тварини(aнглійською):")
+            findDietarry(animal_name_input)
+
+
+
+
+
+
+
+
+
+
+[{"nick": "Jack", "breed": "Labrador", "food": "Meat", "type": "dog"}, {"nick": "tom", "breed": "silver", "food": "meat", "type": "cat"}, {"nick": "bocman", "breed": "taksa", "food": "meat", "type": "dog"}]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
